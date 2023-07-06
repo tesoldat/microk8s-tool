@@ -13,14 +13,13 @@ else
 fi
 
 # clear old credentials
-sed -i "/#'plugins.\"io.containerd.grpc.v1.cri\".registry' contains credentials for pulling images from the registry docker.io ./,+4d" /var/snap/microk8s/current/args/containerd-template.toml
+sed -i "/#'plugins.\"io.containerd.grpc.v1.cri\".registry' contains credentials for pulling images from the registry docker.io ./,+3d" /var/snap/microk8s/current/args/containerd-template.toml
 
 
 # edit /var/snap/microk8s/current/args/containerd-template.toml
 {
   echo "#'plugins.\"io.containerd.grpc.v1.cri\".registry' contains credentials for pulling images from the registry docker.io ."
   echo "[plugins.\"io.containerd.grpc.v1.cri\".registry.mirrors.\"docker.io\"]"
-  echo "  endpoint = [\"https://registry-1.docker.io\"]"
   echo "  username = \"$username\""
   echo "  password = \"$token\""
 } >> /var/snap/microk8s/current/args/containerd-template.toml
