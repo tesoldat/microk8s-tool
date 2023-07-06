@@ -19,7 +19,7 @@ sed -i "/#'plugins.\"io.containerd.grpc.v1.cri\".registry' contains credentials 
 # edit /var/snap/microk8s/current/args/containerd-template.toml
 {
   echo "#'plugins.\"io.containerd.grpc.v1.cri\".registry' contains credentials for pulling images from the registry docker.io ."
-  echo "[plugins.\"io.containerd.grpc.v1.cri\".registry.mirrors.\"docker.io\"]"
+  echo "\[plugins.\"io.containerd.grpc.v1.cri\".registry.configs.\"registry-1.docker.io\".auth\]"
   echo "  username = \"$username\""
   echo "  password = \"$token\""
 } >> /var/snap/microk8s/current/args/containerd-template.toml
