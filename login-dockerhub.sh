@@ -13,10 +13,7 @@ else
 fi
 
 # clear old credentials
-sed -i '/\[plugins.\"io.containerd.grpc.v1.cri\".registry.mirrors.\"docker.io\"\]/d' /var/snap/microk8s/current/args/containerd-template.toml
-sed -i '/endpoint = \[\"https:\/\/registry-1.docker.io\"\]/d' /var/snap/microk8s/current/args/containerd-template.toml
-sed -i '/username = \"*\"/d' /var/snap/microk8s/current/args/containerd-template.toml
-sed -i '/password = \"*\"/d' /var/snap/microk8s/current/args/containerd-template.toml
+sed -i '/\[plugins.\"io.containerd.grpc.v1.cri\".registry.mirrors.\"docker.io\"\]/,+3d' /var/snap/microk8s/current/args/containerd-template.toml
 
 
 # edit /var/snap/microk8s/current/args/containerd-template.toml
