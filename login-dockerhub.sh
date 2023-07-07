@@ -1,4 +1,11 @@
 #!/bin/bash
+# if got option -d, delete the credentials
+if [ "$1" == "-d" ]; then
+    sed -i "/#'plugins.\"io.containerd.grpc.v1.cri\".registry' contains credentials for pulling images from the registry docker.io ./,+3d" /var/snap/microk8s/current/args/containerd-template.toml
+    microk8s.stop
+    microk8s.start
+    exit 0
+fi
 # ask user type in dockerhub credentials
 echo "Please type in your dockerhub credentials"
 read -r -p "Username: " username
